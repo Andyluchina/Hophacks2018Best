@@ -8,10 +8,11 @@ class Event {
     public $status;
     public $location;
     
-    private $db;
+    private $conn;
+    private $table_name = "events";
     
     public function __construct($db) {
-        $this->db = $db;
+        $this->conn = $db;
     }
 }
 ?>
