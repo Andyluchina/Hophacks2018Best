@@ -1,0 +1,15 @@
+#signup{
+
+    margin: 0 auto;
+    width:40%;
+}
+
+#signup input{
+	margin-bottom: 3px;
+}
+
+
+h2{
+	margin-top: 7%;
+	text-align: center;
+}
