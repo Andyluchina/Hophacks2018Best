@@ -10,7 +10,8 @@
              $this->conn = null;
              
              try{
-                 $this->conn = new PDO("mysql:host=".$this->host.";dbname=".$this->db_name, $this->username, $this->password);
+                 $this->conn = new PDO("mysql:host=".$this->host.";dbname=".$this->db_name, $this->user_name, $this->password);
+                 //echo "Success<br>";
              }
              catch(Exception $exception) {
                  echo "Connection error: ".$exception->getMessage();
