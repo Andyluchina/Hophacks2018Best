@@ -32,5 +32,8 @@ hr {
     box-shadow: inset 0 12px 12px -12px rgba(244, 245, 247, 0.5);
 }
 
+.btn {
+	background-color:rgb(128, 59, 16);
 
 
+}
