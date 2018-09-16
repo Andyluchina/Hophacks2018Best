@@ -18,11 +18,11 @@
   <body class="text-center">
     <h1>CleanBaltimore</h1>
 
-    <form class="form-signin" id="login">
+    <form class="form-signin" id="login" action="model/user/login.php" method="POST">
       <img class="mb-4" src="#" alt="" width="72" height="72">
       <h2 class="h3 mb-3 font-weight-normal" id="lh2">Log In</h2>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required>
+      <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password"  required>
       <button class="btn btn-lg btn-primary btn-block" type="submit" id="button">Log in</button>
 
       <p>Don't have an acount? <a href="signup.html">Sign up</a></p>
