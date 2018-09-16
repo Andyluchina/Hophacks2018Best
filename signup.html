@@ -15,7 +15,7 @@
   </head>
 
   <body class="text-center">
-    <form class="form-createAccount" id="signup">
+    <form class="form-createAccount" id="signup" method="POST" action="controller/signUpUser.php">
       <h1>CleanBaltimore</h1>
       <h2 class="h3 mb-3 font-weight-normal" id="lh2">Create Account</h2>
 
@@ -26,11 +26,11 @@
 
       <!-- Email, Password, Username, etc. -->
 
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+      <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required>
 
-      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required>
+      <input type="username" name="name" id="inputUsername" class="form-control" placeholder="Username" required>
 
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
       
 			<input type="password" name="passwordConfirmation" id="passwordCconfirmation" class="form-control input-lg" placeholder="Confirm Password" required>
 
