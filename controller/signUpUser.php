@@ -14,7 +14,9 @@
         $user = new User($db->getConnection());
         $user->insertUser($_POST["name"], $_POST["email"], $_POST["passwordConfirmation"],
                         $_POST["first_name"], $_POST["last_name"], 0);
-        echo "Successfully created!<br>";
+        <script type="text/javascript">
+        window.location.replace("../eventSignup.html");
+        </script>
         ?>
     </body>
 </html>

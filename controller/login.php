@@ -9,6 +9,10 @@ $result = $user->readOne($_POST["inputEmail"], $_POST["inputPassword"]);
 
 if($result == null) 
     echo "Log in failed<br>";
+
+    <script type="text/javascript">
+    window.location.replace("../eventSignup.html");
+    </script>
 ?>
 
 
