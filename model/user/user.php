@@ -15,6 +15,17 @@ class User {
         $this->conn = $db;
     }   
     
+    public function getAllUsers() {
+        $query = "select * from ".$this->table_name." order by point desc;";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $assoc = array();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            array_push($assoc, $row);
+        }
+        return $assoc;
+    }
+    
     public function readOne($u, $pwd) {
         $query = "select * from ".$this->table_name." where password=".$pwd." and gmail=".$u;
         $stmt = $this->conn->prepare($query);

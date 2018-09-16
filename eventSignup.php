@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+
+<!doctype html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../../../favicon.ico">
+
+        <title>Events</title>
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="eventSignupcss.css">
 
-        <link rel="stylesheet" type="text/css" href="createeventcss.css">
-        <title>Create Event</title>
     </head>
-    <body>
+
+
+
+
+    <body class="text-center">
+
         <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-dark">
             <div class="container">
                 <!-- if you click the logo, you go to myevent -->
@@ -26,7 +38,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="createevent.html" style="color: white;">Create Event</a>
-                        </li>
+                        <
+                            /li>
                         <li class="nav-item">
                             <a class="nav-link" href="rankings.php" style="color: white;">Rankings</a>
                         </li>
@@ -42,29 +55,44 @@
         </nav>
 
 
-
-
-        <h2 class="font-weight-normal">Create an Event</h2>
-        <form action="controller/createEvent.php" id="signup" method="POST">
-
-
-            <input type="text" name="eventName" class="form-control input-lg" placeholder="What's it called? Name" required>
-            <input type="date" name="startdate" class="form-control input-lg" placeholder="Start Date" required>
-
-            <!-- Email, Password, Username, etc. -->
-
-            <input type="time" name="starttime" class="form-control" placeholder="Time it Begins" required>
-
-            <input type="time" name="endTime" class="form-control" placeholder="Time it Ends" required>
-
-            <input type="text" name="address" class="form-control" placeholder="what's the address" required>
-
-            <input type="text" name="Description" class="form-control input-lg" placeholder="What's it about?" required>
-
-            <button class="btn btn-lg btn-secondary btn-block" type="submit">Create Event</button>
-
+        <br>
+        <h1>Signup to Volunteer!</h1><br>
+        <form class="Event Signup" action="">
+            <table class="table table-bordered" id="eventList">
+                <thead>
+                    <tr>
+                        <th scope="col">Event</th>
+                        <th scope="col">Date</th>
+                        <th scope="col"># of Volunteers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include "model/event/event.php";
+                    include "model/database.php";
+                    $database = new Database();
+                    $event = new Event($database->getConnection());
+                    $dataRows = $event->getEvents();
+                    foreach($dataRows as $data) {
+                        $data["attendees"] = explode(",", $data["attendees"]);
+                        $data["organizers"] = explode(",", $data["organizers"]);
+                        echo "<tr><td>".
+                            "<input type='checkbox' name='events_checked' value=".$data["id"].">&nbsp;&nbsp;".
+                            $data["name"]
+                            ."</td><td>"
+                            .$data["time"]
+                            ."</td><td>"
+                            .(count($data["attendees"]) + count($data["organizers"]))
+                            ."</td>"
+                            ."<tr>";
+                    }
+                    ?>
+                    
+                </tbody>
+            </table>
+            
+            <input type='submit'>
         </form>
-
 
 
 

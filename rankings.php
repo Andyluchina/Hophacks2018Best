@@ -5,9 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-        <link rel="stylesheet" type="text/css" href="createeventcss.css">
-        <title>Create Event</title>
+        <title>Rankings CleanBaltimore</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-dark">
@@ -28,12 +26,12 @@
                             <a class="nav-link" href="createevent.html" style="color: white;">Create Event</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="rankings.php" style="color: white;">Rankings</a>
+                            <a class="nav-link" href="rankings.html" style="color: white;">Rankings</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!-- link needed -->
-                        <li class="nav-item"><a class="nav-link" href="myevents.html" style="color: white;">Username</a></li>
+                        <li class="nav-item"><a class="nav-link" href="myevents.html" style="color: white;"></a></li>
                         <!-- the login value should be false after logout -->
                         <li class="nav-item"><a class="nav-link" href="index.html" style="color: white;"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                     </ul>
@@ -42,28 +40,42 @@
         </nav>
 
 
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">User</th>
+                    <th scope="col"># of Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include 'model/database.php';
+                include 'model/user/user.php';
+                
+                $db = new Database();
+                $user = new User($db->getConnection());
+                $rows = $user->getAllUsers();
+                $i = 1;
+                foreach($rows as $data) {
+                    echo "<tr>"
+                        ."<td>".$i."</td>"
+                        ."<td>".$data["firstname"]." ".$data["lastname"]."</td>"
+                        ."<td>".$data["point"]."</td>"
+                        ."</tr>";
+                    $i += 1;
+                }
+                ?>
+            </tbody>
+        </table>
 
 
-        <h2 class="font-weight-normal">Create an Event</h2>
-        <form action="controller/createEvent.php" id="signup" method="POST">
 
 
-            <input type="text" name="eventName" class="form-control input-lg" placeholder="What's it called? Name" required>
-            <input type="date" name="startdate" class="form-control input-lg" placeholder="Start Date" required>
 
-            <!-- Email, Password, Username, etc. -->
 
-            <input type="time" name="starttime" class="form-control" placeholder="Time it Begins" required>
 
-            <input type="time" name="endTime" class="form-control" placeholder="Time it Ends" required>
-
-            <input type="text" name="address" class="form-control" placeholder="what's the address" required>
-
-            <input type="text" name="Description" class="form-control input-lg" placeholder="What's it about?" required>
-
-            <button class="btn btn-lg btn-secondary btn-block" type="submit">Create Event</button>
-
-        </form>
 
 
 
