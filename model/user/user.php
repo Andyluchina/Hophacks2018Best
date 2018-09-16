@@ -2,7 +2,9 @@
 class User {
     public $id;
     public $gmail;
-    public $name;
+    public $username;
+    public $firstname;
+    public $lastname;
     public $password;
     public $point;
 
@@ -18,12 +20,21 @@ class User {
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $this->name = $row['name'];
+        $this->username = $row['username'];
         $this->id = $row['id'];
         $this->gmail = $row['gmail'];
         $this->password = $row['password'];
         $this->point = $row['point'];
+        $this->firstname = $row['firstname'];
+        $this->lastname = $row['lastname'];
         return $this;
+    }
+    
+    public function insertUser($un, $gm, $pwd, $fn, $ln, $pt) {
+        $query = "insert into ".$this->table_name." (id, gmail, password, username, point, firstname, lastname)
+        values (default, :gm, :pwd, :un, :pt, :fn, :ln)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array("un"=>$un, "gm" => $gm, "pwd" => $pwd, "fn" => $fn, "ln" => $ln, "pt" => $pt));
     }
 }
 ?>
