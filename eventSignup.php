@@ -56,7 +56,7 @@
 
 
         <br>
-        <h1>Signup to Volunteer!</h1><br>
+        <h1>Signup to Volunteer!</h1>
         <form class="Event Signup" action="">
             <table class="table table-bordered" id="eventList">
                 <thead>
